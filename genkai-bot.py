@@ -74,7 +74,8 @@ async def on_voice_state_update(member, before, after):
         mic = ''
         if after.self_mute:
             mic = '🔇'
-        await get_Log_Channel().send('[log] ' + mic + member.display_name + '('+ member.name + ')が'+after.channel.name+'でWebカメラをONにしました')
+        if chLog != 0:
+            await get_Log_Channel().send('[log] ' + mic + member.display_name + '('+ member.name + ')が'+after.channel.name+'でWebカメラをONにしました')
         notifyChannel = get_union_notify_channel(after.channel)
         if notifyChannel != None:
             print('[log] '+ after.channel.name + 'の通知Channelが有効です 通知先: '+ notifyChannel.name )
@@ -87,7 +88,8 @@ async def on_voice_state_update(member, before, after):
         mic = ''
         if after.self_mute:
             mic = '🔇'
-        await get_Log_Channel().send('[log] ' + mic + member.display_name + '('+ member.name + ')が'+after.channel.name+'でGoLiveを開始しました')
+        if chLog != 0:
+            await get_Log_Channel().send('[log] ' + mic + member.display_name + '('+ member.name + ')が'+after.channel.name+'でGoLiveを開始しました')
 
 # ボイスチャンネル参加検知
 @client.event
